@@ -143,7 +143,29 @@ You will hand in your homework assignments on GitHub. Your repository should inc
 
   + an .Rmd file with your solutions.
   + a .pdf write-up. Preferably, this is just the knitted version of your .Rmd file. Make sure to use chunk-option to format the write-up nicely.
+  
 
+## Term paper
+
+Your term paper may seem far away now, but I strongly (!!!) recommend to start thinking about it as early as possible. Things you can do this week:
+  + Find co-authors.
+  + What is your field of interest? Browse the top journals of your field and find papers in your field of interest.
+  + Find papers that fascinate you. The more you like a paper, the better. You do not need to see a weakness right away in order to improve an analysis at a later point.
+    + Read those papers thoroughly, especially the methods and analysis section.
+    + You certainly do not have to come up with a concrete research idea this week. But starting to read early will help you to connect the contents of this course to the research in your field and ultimately come up with your own idea.
+    + Good ideas need some time to grow in your mind.
+
+
+## Mental Health
+
+This is a challenging course in a challenging time. It is also an elective course, so I expect a high level of commitment towards the learning goals of the course. However, the pandemic puts a significant strain on all of us and, of course, also affects our performance capacity. For that reason, I would like to emphasize some points:
+
+  + This course should be up high on your priority list, but **your health--physical and mental--definitely has highest priority**. 
+  + My goal is that you learn as much as possible. I won't achieve this goal if your mental healths suffers under this course. I will have an open ear and try to find individual solutions if you think that this is nevertheless the case. 
+  + Things that help me (this might be different for you):
+    + I think that mental health is a precondition for productivity. So I like to remind myself that taking time off is not "unproductive time". 
+    + I like to put time limits on my work days. Such limits often help me to use my time more effectively.
+    + Building a stable weekly routine that helps me to avoid situations in which I have to finish work just before a deadline. Startig early on homework assignments is part of this.
 
 
 ## R Notebooks
@@ -166,23 +188,31 @@ Markdown is a very simple language to write documents and transform them to all 
 
 The best thing about it: It allows us to integrate `R`-code in the markdown language. This is very straightforward, just like in this file we have to indicate what is code and `knitr` will first calculate all the code chunks and put them in the final markdown document. RStudio directly translates this document to html. When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the _Preview_ button or press _Cmd+Shift+K_ to preview the HTML file).
 
-We start with a little detour: In markdown it is really easy to format text. This is _italic_, this is **bold**, this is _**italic and bold**_.
+We start with a little detour: In markdown it is really easy to format text..
 
-1. First ordered list item
-2. Another item
-    + Unordered sub-list. (two tabs and +)
-1. Actual numbers don't matter, just that it's a number
-    1. Ordered sub-list. (two tabs and a number)
-4. And another item.
+  - *This text is italic*, _this as well_
+  - **This text is bold**
+  - _**italic and bold**_.
+  - `This is code`
+  - [This is a link to the R Markdown homepage](https://rmarkdown.rstudio.com)
+
+We can generate ordered lists:
+
+  1. First ordered list item
+  2. Another item
+      + Unordered sub-list. (two tabs and +)
+  1. Actual numbers don't matter, just that it's a number
+      1. Ordered sub-list. (two tabs and a number)
+  4. And another item.
 
 The same list without numbers: 
 
-* First ordered list item
-* Another item
-    + Unordered sub-list. (two tabs and +)
-* Actual numbers don't matter, just that it's a number
-    1. Ordered sub-list. (two tabs and a number)
-* And another item.
+  * First ordered list item
+  * Another item
+      + Unordered sub-list. (two tabs and +)
+  * Actual numbers don't matter, just that it's a number
+      1. Ordered sub-list. (two tabs and a number)
+  * And another item.
 
 R Markdown integrates really well with R Code. You can include a new code chunk by pressing _Cmd+Alt+I_. In a code chunk you can write and evaluate all your favorite R Code and include the results directly in your document. For example a plot. 
 
@@ -224,9 +254,20 @@ summary(df)
 
 You can even call R objects inline. Like: The second value of x is `r round(x[2],2)`. This is really helpful for writing up results that change from time to time (like simulations).
 
-In a paper you usually don't want to include the code that produced your plots and numbers (however for your homework assignments you always have to include it).
 
-No problem, you can set a lot of so called chunk options, like `echo`. If you set `echo` to `FALSE`, then only the output of the code chunk will be included in your final document. But not the code itself.
+
+You can set a lot of so called chunk options. Here is an overview:
+
+  - `include = FALSE` prevents code and results from appearing in the finished file. R Markdown still runs the code in the chunk, and the results can be used by other chunks. This is useful for running your data pre-processing and models.
+  - `echo = FALSE` prevents code, but not the results from appearing in the finished file. This is a useful way to embed figures.
+  - `message = FALSE` prevents messages that are generated by code from appearing in the finished file.
+  - `warning = FALSE` prevents warnings that are generated by code from appearing in the finished.
+  - `fig.cap = "..."` adds a caption to a figure produced by the chunk.
+
+See the [R Markdown Reference Guide](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?_ga=2.169319849.94966807.1602002830-1180689241.1600075670) for a complete list of knitr chunk options.
+
+
+Why? In a paper you usually don't want to include the code that produced your plots and numbers (however for your homework assignments you always have to include it). This can be achieved with the option `echo`. If you set `echo` to `FALSE`, then only the output of the code chunk will be included in your final document. But not the code itself.
 
 ```{r Display a table but not the code, echo = FALSE}
 df <- data.frame(y = y, x = x)
@@ -292,7 +333,7 @@ M
 square_it(M)
 ```
 
-Of course, it seems silly to write a function when I can use an implemented operator. Typically, the functions you will write are more complicated and have more arguments. It is hard to keep track when functions become long and complicated. For that reason, it is helpful to know that you can call functions within another function.
+Of course, it seems redundant to write a function when I can use an implemented operator. Typically, the functions you will write are more complicated and have more arguments. It is hard to keep track when functions become long and complicated. For that reason, it is helpful to know that you can call functions within another function.
 
 ```{r A complicated function}
 complicated_function <- function(scalar, vector, matrix) {
@@ -346,7 +387,16 @@ M_diag <- diag(1, nrow = 3, ncol = 3)
 M_diag
 ```
 
-```{r Matrix Math, eval = F}
+#### Matrix Multiplication
+
+We start by multiplying a scalar with a vector and a matrix:
+
+```{r Matrix Math I, eval = F}
+
+scalar
+vector
+M
+
 # Scalar-Vector/Matrix multiplication
 
 scalar * vector
@@ -359,16 +409,13 @@ vector %*% vector # What's the difference?
 
 vector * M
 
-vector
-M
-
-vector %*% M
-
-# Matrix-Matrix multiplication
-
-# elementwise multiplication
+# Elementwise multiplication of two matrices:
 M * M
+```
 
+
+
+```{r Matrix Math II}
 # dot product
 M %*% M
 
@@ -384,41 +431,165 @@ M %*% M2
 M2 %*% M
 ```
 
+
+When talking about "matrix-muliplication", we usually refer to the "matrix product" which differs from elementwise multiplication. Let's start with the multiplication of a vector and a matrix:
+
+
+$$
+\begin{pmatrix} 1 & 2 & 3\end{pmatrix}
+\times 
+\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}
+=
+\begin{pmatrix} 
+1\cdot1 + 2\cdot4 & 3\cdot7 + 
+1\cdot2 + 2\cdot5 & 3\cdot8 + 
+1\cdot3 + 2\cdot6 & 3\cdot9
+\end{pmatrix}
+=
+\begin{pmatrix} 
+30 & 36 & 42 \\
+\end{pmatrix}
+$$
+
+Let's do this with R:
+
+```{r Matrix Math III}
+vector
+M
+
+vector %*% M
+```
+
+Now we want to multiply two matrices:
+
+$$
+\begin{pmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{pmatrix}
+\times 
+\begin{pmatrix} 7 & 8 & 9 \\ 10 & 11 & 12 \end{pmatrix}
+=
+\begin{pmatrix} 
+1\cdot7 + 2\cdot10 & 1\cdot8 + 2\cdot11 & 1\cdot9 + 2\cdot12 \\
+3\cdot7 + 4\cdot10 & 3\cdot8 + 4\cdot11 & 3\cdot9 + 4\cdot12 \\
+5\cdot7 + 6\cdot10 & 5\cdot8 + 6\cdot11 & 5\cdot9 + 6\cdot12 \\
+\end{pmatrix}
+=
+\begin{pmatrix} 
+27 & 30 & 33 \\
+61 & 68 & 75 \\
+95 & 106 & 117 \\
+\end{pmatrix}
+$$
+
+```{r Matrix Math VI, eval = F}
+# dot product
+M %*% M
+
+M1 <- matrix(c(1:6),
+             nrow = 3,
+             ncol = 2,
+             byrow = T)
+
+M2 <- matrix(c(7:12),
+             nrow = 2,
+             ncol = 3,
+             byrow = T)
+
+M1 * M2
+M2 * M1
+
+M1 %*% M2
+```
+
+Is `M1 %*% M2` the ssame as `M2 %*% M1`. Let's do it analytically first:
+
+$$
+\begin{pmatrix} 7 & 8 & 9 \\ 10 & 11 & 12 \end{pmatrix}
+\times 
+\begin{pmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{pmatrix}
+=
+\begin{pmatrix} 
+7\cdot1 + 8\cdot3 + 9\cdot5 & 7\cdot2 + 8\cdot4 + 9\cdot6 \\
+10\cdot1 + 11\cdot3 + 12\cdot5 & 10\cdot2 + 11\cdot4 + 12\cdot6 \\
+\end{pmatrix}
+=
+\begin{pmatrix} 
+76 & 100 \\
+103 & 136\\
+\end{pmatrix}
+$$
+And now in R:
+
+```{r}
+M2 %*% M1
+```
+
+
 Usually, when multiplying matrices, we are going to use the `%*%` command.
+
 Now all we need is the commands for two more common matrix operations.
-**The transpose** i.e. $M'$ and **the inverse** i.e. $M^{-1}$.
+The **transpose** i.e. $M'$ and the **inverse** i.e. $M^{-1}$.
 
 Who wants to transpose the following matrices for me? 
 
-$\begin{pmatrix} 1 & 2 \\ 2 & 3 \end{pmatrix}$
+$$
+\begin{pmatrix} 1 & 2 \\ 2 & 3 \end{pmatrix}
+$$
 
-$\begin{pmatrix} 1 & 1 & 1 \\ 2 & 3 & 4\\ 4 & 5 & 6 \end{pmatrix}$
-
-Now the inverse of $\begin{pmatrix} 1 & 2 \\ 2 & 3 \end{pmatrix}$?
+$$
+\begin{pmatrix} 1 & 1 & 1 \\ 2 & 3 & 4\\ 4 & 5 & 6 \end{pmatrix}
+$$
 
 Luckily, the transpose and inverse are already implemented in R for us. So we can spend some more time on more interesting things.
 
-```{r Matrix Operations, eval = FALSE}
-# The transpose
-t(M)
-t(t(M)) == M
+```{r Transpose}
+M3 <- matrix(c(1, 2, 2, 3),
+             nrow = 2,
+             ncol = 2,
+             byrow = T)
 
+# The transpose
+t(M3)
+t(t(M3)) == M3
+
+M4 <- matrix(c(rep(1, 3), 2, 3, 4, 4:6),
+             nrow = 3,
+             ncol = 3,
+             byrow = T)
+
+t(M4)
+```
+
+What about the inverse of this matrix:
+
+$$
+\begin{pmatrix} 1 & 2 \\ 2 & 3 \end{pmatrix}
+$$
+
+When we multiply a matrix $A$ by its inverse $A^{-1}$ we get the Identity Matrix $I$:
+
+$$
+A \times A^{-1} = I
+$$
+
+```{r Inverse, eval = FALSE}
 # The inverse
 solve(M2)
 solve(M) # What went wrong?
 
-M3 <- matrix(c(1, 2, 2, 3),
+M5 <- matrix(c(1, 2, 2, 3),
              nrow = 2,
              ncol = 2,
              byrow = TRUE)
-M3
+M5
 
-solve(M3)
-t(M3)
+solve(M5)
 
-M3 %*% solve(M3)
+# check whether AX = XA = I is true
+M5 %*% solve(M5)
+solve(M5) %*% M5
 ```
 
+**Matrix algebra will be essential in this course!** There will be matrix algebra in every single week. So if you struggle understanding these operations, please review the respective material from your math course this week.
 
 ### Exercise I
 
