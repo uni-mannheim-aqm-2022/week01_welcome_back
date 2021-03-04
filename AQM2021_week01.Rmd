@@ -64,7 +64,7 @@ The general **content** of a lab session will be something like:
 
 + Implement/Translate the concepts and estimators from the lecture in R.
 + Explore properties of new estimators using simulations.
-+ If time perits, we may discuss extensions of estimators introduced in the lecture.
++ If time permits, we may discuss extensions of estimators introduced in the lecture.
 + Adress open questions about the lecture. The lab will not be a second lecture, however, I am more than happy to answer your questions about the lecture--if I can. 
 + Prepare for homework assignments and discuss solutions.
 
@@ -120,16 +120,16 @@ Most of your fellow students are familiar with the workflow by now, so if there 
 
 There will be **six homework assignments**. All assignments will contain both theoretical questions and practical tasks that will require you to write `R` code.
 
-The homeworks will be challenging. Some parts will potentially be very challenging. While there will be some parts that ask you to directly apply material from the lecture and the lab, there will be other exercises that will introduce new but related material. Since this is an elective, advanced course, I expect you to approach challenges with ambition and an open mind. I strongly advice you to work in groups (of three). Plan at least one day--a.k.a. 8 hours--to work through all exercises. 
+The homeworks will be challenging. Some parts will potentially be very challenging. While there will be some parts that ask you to directly apply material from the lecture and the lab, there will be other exercises that will introduce new but related material. Since this is an elective, advanced course, I expect you to approach challenges with ambition and an open mind. Please work in groups (preferably groups of three). Plan at least one day--a.k.a. 8 hours--to work through all exercises. 
 
 For every homework assignment you can get a **maximum of 20 points**. There will always be **optional exercises** that are worth **3 extra points**.
 
 Although the homeworks should push you towards your limits, they are not intended to frustrate you. If you cannot figure out a question (which I suspect will happen at some point), you can do the following (preferably in this order):
 
-1. Talk to your group members and classmates. Everybody has strengths and weaknesses, good and bad days. This class is a collective learning enterprise and team work is highly encouraged.
-2. Post your question on ILIAS. I will open a question forum thread for each homework assignment where you can ask questions and share materials with your fellow students. I encourage you to use it.
-3. Come to my office hours. I have 90 minutes on Mondays (4 pm to 5.30 pm on Zoom) reserved for AQM questions. Please use the ILIAS scheduling tool by Monday morning (10 a.m.) if you want to come by. If you already have specific questions you want to ask, include them already so that I can plan and prepare for your questions ahead of time. If Monday does not work for you at all, send me an email and we can make an appointment.
-4. Talk to Thomas Gschwend. I would recommend that you use this option as a last resort. For example, if I am unable to answer your questions. Mostly, you should use Thomas Gschwend's office hours to discuss your final paper ideas.
+1. **Talk to your group members and classmates**. Everybody has strengths and weaknesses, good and bad days. This class is a collective learning enterprise and team work is highly encouraged.
+2. **Post your question on ILIAS**. I opened a forum already. Use it to ask questions and share materials with your fellow students. I encourage you to use it.
+3. **Come to my office hours**. I have 90 minutes on Mondays (4 pm to 5.30 pm on Zoom) reserved for AQM questions. Please send me an email by Monday morning (10 a.m.) if you want to come by. If you already have specific questions you want to ask, include them already so that I can plan and prepare for your questions ahead of time. If Monday does not work for you at all, send me an email and we can make an appointment.
+4. **Talk to Thomas Gschwend**. I would recommend that you use this option as a last resort. For example, if I am unable to answer your questions. Mostly, you should use Thomas Gschwend's office hours to discuss your final paper ideas.
 
 ### Homework Groups
 
@@ -141,13 +141,14 @@ Homweork assignments will be distributed via GitHub after the lecture on Wednesd
 
 You will hand in your homework assignments on GitHub. Your repository should include at least two files:
 
-  + an .Rmd file with your solutions.
+  + an .Rmd file with your solutions. The R-Code must replicate your solutions.
   + a .pdf write-up. Preferably, this is just the knitted version of your .Rmd file. Make sure to use chunk-option to format the write-up nicely.
   
 
 ## Term paper
 
 Your term paper may seem far away now, but I strongly (!!!) recommend to start thinking about it as early as possible. Things you can do this week:
+  
   + Find co-authors.
   + What is your field of interest? Browse the top journals of your field and find papers in your field of interest.
   + Find papers that fascinate you. The more you like a paper, the better. You do not need to see a weakness right away in order to improve an analysis at a later point.
@@ -253,8 +254,6 @@ summary(df)
 ```
 
 You can even call R objects inline. Like: The second value of x is `r round(x[2],2)`. This is really helpful for writing up results that change from time to time (like simulations).
-
-
 
 You can set a lot of so called chunk options. Here is an overview:
 
@@ -391,7 +390,7 @@ M_diag
 
 We start by multiplying a scalar with a vector and a matrix:
 
-```{r Matrix Math I, eval = F}
+```{r Matrix Math I}
 
 scalar
 vector
@@ -411,24 +410,6 @@ vector * M
 
 # Elementwise multiplication of two matrices:
 M * M
-```
-
-
-
-```{r Matrix Math II}
-# dot product
-M %*% M
-
-M2 <- matrix(c(1:6),
-             nrow = 3,
-             ncol = 2,
-             byrow = T)
-
-M * M2
-M2 * M
-
-M %*% M2
-M2 %*% M
 ```
 
 
@@ -480,10 +461,7 @@ $$
 \end{pmatrix}
 $$
 
-```{r Matrix Math VI, eval = F}
-# dot product
-M %*% M
-
+```{r Two Matrices}
 M1 <- matrix(c(1:6),
              nrow = 3,
              ncol = 2,
@@ -493,14 +471,17 @@ M2 <- matrix(c(7:12),
              nrow = 2,
              ncol = 3,
              byrow = T)
+```
 
+
+```{r Matrix Math VI, eval = F}
 M1 * M2
 M2 * M1
 
 M1 %*% M2
 ```
 
-Is `M1 %*% M2` the ssame as `M2 %*% M1`. Let's do it analytically first:
+Is `M1 %*% M2` the same as `M2 %*% M1`. Let's do it analytically first:
 
 $$
 \begin{pmatrix} 7 & 8 & 9 \\ 10 & 11 & 12 \end{pmatrix}
@@ -517,6 +498,8 @@ $$
 103 & 136\\
 \end{pmatrix}
 $$
+
+
 And now in R:
 
 ```{r}
@@ -571,11 +554,7 @@ $$
 A \times A^{-1} = I
 $$
 
-```{r Inverse, eval = FALSE}
-# The inverse
-solve(M2)
-solve(M) # What went wrong?
-
+```{r Inverse}
 M5 <- matrix(c(1, 2, 2, 3),
              nrow = 2,
              ncol = 2,
@@ -601,20 +580,8 @@ A lab session without an exercise would be boring. So here is your first AQM `R`
 
 
 ```{r Exercise I, eval = FALSE}
-X <- matrix(rnorm(12), 
-            nrow = 4, 
-            ncol = 3)
-
-y <- rnorm(4)
 
 
-beta <- function(X, y) {
-  return(solve(t(X) %*% X) %*% t(X) %*% y)
-  
-}
-
-
-beta(X, y)
 ```
 
 
