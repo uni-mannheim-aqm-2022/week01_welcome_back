@@ -1,7 +1,9 @@
 ---
 title: "AQM Week 01 -- Welcome back to R"
-author: "Oliver Rittmann - University of Mannheim"
-date: "March 04, 2020"
+author:
+  - "Oliver Rittmann"
+  - "Viktoriia Semenova"
+date: "February 17, 2022"
 output:
   html_document:
     toc: true
@@ -50,9 +52,9 @@ sapply(p_needed, require, character.only = TRUE)
 ## Program for today
 
 1. I will briefly talk about what you can expect from the lab sessions and what I expect.
-  + GitHub.
-  + Organization of the lab sessions.
-  + Homework assignments.
+  + GitHub
+  + Organization of the lab sessions
+  + Homework assignments
 2. We look under the hood of R Notebooks - the main tool we will work with in the lab sessions.
 3. We refresh some R Skills and have a look at Matrix Algebra in R.
  
@@ -65,7 +67,7 @@ The general **content** of a lab session will be something like:
 + Implement/Translate the concepts and estimators from the lecture in R.
 + Explore properties of new estimators using simulations.
 + If time permits, we may discuss extensions of estimators introduced in the lecture.
-+ Adress open questions about the lecture. The lab will not be a second lecture, however, I am more than happy to answer your questions about the lecture--if I can. 
++ Address open questions about the lecture. The lab will not be a second lecture, however, I am more than happy to answer your questions about the lecture--if I can. 
 + Prepare for homework assignments and discuss solutions.
 
 As a result, **you can expect** the lab sessions to prepare you to ...
@@ -80,24 +82,24 @@ As a result, **you can expect** the lab sessions to prepare you to ...
 
 I aim split each lab session into two parts:
 
-  - **Phase 1** (~60 minutes): In this part I will give you input. This includes all the points mentioned above. Whether you run the code simultaneously on your computer or not is completely up to you -- but its absolutely fine to simply listen and watch without doing any coding. You are welcome to interrupt us at any time if you have questions or feel like the pace is too high.
+  - **Phase 1** (~60 minutes): In this part we will give you input. This includes all the points mentioned above. Whether you run the code simultaneously on your computer or not is completely up to you -- but its absolutely fine to simply listen and watch without doing any coding. You are welcome to interrupt us at any time if you have questions or feel like the pace is too high.
   
-  - **Phase 2** (~30 minutes): Now its your turn! In this phase you will work on exercises that are similar to the stuff I discussed in phase 1. This is all about you trying things out, doing mistakes, trying again, and succeed. Within this phase I will distribute you into break out rooms. Think of it like virtual neighbours in the lab you can talk to. You can talk to your neighbours if you have any problems or, if things are easy for you, to explain the stuff you learned to others. I will be around as well and try to solve problems and difficulties that come up. Please do not hesitate at all to make use of that.
+  - **Phase 2** (~30 minutes): Now it's your turn! In this phase you will work on exercises that are similar to the stuff discussed in phase 1. This is all about you trying things out, doing mistakes, trying again, and succeed. Within this phase we will distribute you into break out rooms. Think of it like virtual neighbors in the lab you can talk to. You can talk to your neighbors if you have any problems or, if things are easy for you, to explain the stuff you learned to others. I will be around as well and try to solve problems and difficulties that come up. Please do not hesitate at all to make use of that.
 
 
 ### GitHub workflow
 
-As in QM, we will work with GitHub. I assume that by now you downloaded and installed R and Rstudio and have your personal GitHub account.
+As in QM, we will work with GitHub. We assume that by now you downloaded and installed R and Rstudio and have your personal GitHub account.
 
-**All of you who did not take QM in 2020 should have received an e-mail with instructions on how to set-up your GitHub account. If this is not the case: Send me an e-mail after this class.**
+**All of you who did not take QM in 2021 should have received an e-mail with instructions on how to set-up your GitHub account. If this is not the case: Send me an e-mail after this class.**
 
-The course has its own page on GitHub, you can find it here: [https://github.com/uni-mannheim-aqm-2022](https://github.com/uni-mannheim-aqm-2021). This is the place where you can find all relevant materials for the lab sessions. It is also the place where you download and hand-in your homework assignments. 
+The course has its own page on GitHub, you can find it here: [https://github.com/uni-mannheim-aqm-2022](https://github.com/uni-mannheim-aqm-2022). This is the place where you can find all relevant materials for the lab sessions. It is also the place where you download and hand-in your homework assignments. 
 
 For those of you who are new to GitHub here is how you will get your materials:
 
 #### Get the URL of the repo for the current week
 
-Go to [https://github.com/uni-mannheim-aqm-2021](https://github.com/uni-mannheim-aqm-2021) and click on the repository for the current week (this week, this is called `week01_welcome_back`). Now, click on the green **Clone or download** button and select **Use HTTPS** (this might already be selected by default, and if it is, you’ll see the text Clone with HTTPS as in the image below). Click on the clipboard icon to copy the repo URL.
+Go to [https://github.com/uni-mannheim-aqm-2022](https://github.com/uni-mannheim-aqm-2022) and click on the repository for the current week (this week, this is called `week01_welcome_back`). Now, click on the green **Clone or download** button and select **Use HTTPS** (this might already be selected by default, and if it is, you’ll see the text Clone with HTTPS as in the image below). Click on the clipboard icon to copy the repo URL.
 
 ![](images/github_clone.png)
 
@@ -114,40 +116,40 @@ Go to [https://github.com/uni-mannheim-aqm-2021](https://github.com/uni-mannheim
   6. Click on `Create Project`.
 
 
-Most of your fellow students are familiar with the workflow by now, so if there are any problems, please try to help each other. If you still have problems, I am happy to help.
+Most of your fellow students are familiar with the workflow by now, so if there are any problems, please try to help each other. If you still have problems, we are happy to help.
 
 ## Homework Assignments
 
 There will be **six homework assignments**. All assignments will contain both theoretical questions and practical tasks that will require you to write `R` code.
 
-The homeworks will be challenging. Some parts will potentially be very challenging. While there will be some parts that ask you to directly apply material from the lecture and the lab, there will be other exercises that will introduce new but related material. Since this is an elective, advanced course, I expect you to approach challenges with ambition and an open mind. Please work in groups (preferably groups of three). Plan at least one day--a.k.a. 8 hours--to work through all exercises. 
+The homework assignments will be challenging. Some parts will potentially be very challenging. While there will be some parts that ask you to directly apply material from the lecture and the lab, there will be other exercises that will introduce new but related material. Since this is an elective, advanced course, I expect you to approach challenges with ambition and an open mind. Please work in groups (preferably groups of three). Plan at least one day--a.k.a. 8 hours--to work through all exercises. 
 
 For every homework assignment you can get a **maximum of 20 points**. There will always be **optional exercises** that are worth **3 extra points**.
 
 Although the homeworks should push you towards your limits, they are not intended to frustrate you. If you cannot figure out a question (which I suspect will happen at some point), you can do the following (preferably in this order):
 
 1. **Talk to your group members and classmates**. Everybody has strengths and weaknesses, good and bad days. This class is a collective learning enterprise and team work is highly encouraged.
-2. **Post your question on ILIAS**. I opened a forum already. Use it to ask questions and share materials with your fellow students. I encourage you to use it.
-3. **Come to my office hours**. I have 90 minutes on Mondays (4 pm to 5.30 pm on Zoom) reserved for AQM questions. Please send me an email by Monday morning (10 a.m.) if you want to come by. If you already have specific questions you want to ask, include them already so that I can plan and prepare for your questions ahead of time. If Monday does not work for you at all, send me an email and we can make an appointment.
-4. **Talk to Thomas Gschwend**. I would recommend that you use this option as a last resort. For example, if I am unable to answer your questions. Mostly, you should use Thomas Gschwend's office hours to discuss your final paper ideas.
+2. **Post your question on Slack**. Use it to ask questions and share materials with your fellow students. We encourage you to use it, and we will monitor it daily during weekdays.
+3. **Come to office hours**. We both have 90 minutes reserved for AQM questions, Oliver on Mondays 16:00 to 17.30, Viktoriia on Tuesdays 15:30 to 17:00. Until further notice from the University, office hours have to take place via Zoom. You can come to either one of us, regardless of which lab you attended that week. To avoid waiting, please schedule an appointment via Calendly. If you already have specific questions you want to ask, include them already so that I can plan and prepare for your questions ahead of time. If neither of Monday nor Tuesday work for you at all, slack us and we can make an appointment.
+4. **Talk to Thomas Gschwend**. We would recommend that you use this option as a last resort. For example, if we are unable to answer your questions. Mostly, you should use Thomas Gschwend's office hours to discuss your final paper ideas and lecture questions.
 
 ### Homework Groups
 
-Other than last semester, you are free to form your own homework groups and work together for the entire semester. Please start organizing your homework group after today's session. If you formed a group, send me a mail with your names, preferably **by Monday morning**. If you do not find a group, send me a mail by Monday as well and I will try to figure it out for you. You can also shortly summarise your research interests, so I can try to find a well fitting group for you.
+Other than last semester, you are free to form your own homework groups and work together for the entire semester. Please start organizing your homework group after today's session (if you haven't already). If you formed a group, DM on Slack one of tutors with your names, preferably **by Monday morning**. If you do not find a group on your own, DM one of us by Monday as well and we will try to figure it out for you. You can also shortly summarise your research interests, so we can try to find a well-fitting group for you.
 
-Homweork assignments will be distributed via GitHub after the lecture on Wednesdays. Assignemts are due by the following Tuesday, 23:59. 
+Homework assignments will be distributed via GitHub after the lecture on Wednesdays. Assignments are due by the following Tuesday, 23:59. 
 
 #### Your homework submissions
 
 You will hand in your homework assignments on GitHub. Your repository should include at least two files:
 
-  + an .Rmd file with your solutions. The R-Code must replicate your solutions.
-  + a .pdf write-up. Preferably, this is just the knitted version of your .Rmd file. Make sure to use chunk-option to format the write-up nicely.
+  + an `.Rmd` file with your solutions. The R-Code must replicate your solutions.
+  + a `.pdf` write-up. This should just be the knitted version of your `.Rmd` file. Make sure to use chunk-option to format the write-up nicely. Avoid using machine-specific lines, so your code is reproducible. 
   
 
 ## Term paper
 
-Your term paper may seem far away now, but I strongly (!!!) recommend to start thinking about it as early as possible. Things you can do this week:
+Your term paper may seem far away now, but we strongly (!!!) recommend to start thinking about it as early as possible. Things you can do this week:
   
   + Find co-authors.
   + What is your field of interest? Browse the top journals of your field and find papers in your field of interest.
@@ -159,14 +161,14 @@ Your term paper may seem far away now, but I strongly (!!!) recommend to start t
 
 ## Mental Health
 
-This is a challenging course in a challenging time. It is also an elective course, so I expect a high level of commitment towards the learning goals of the course. However, the pandemic puts a significant strain on all of us and, of course, also affects our performance capacity. For that reason, I would like to emphasize some points:
+This is a challenging course in a challenging time. It is also an elective course, so we expect a high level of commitment towards the learning goals of the course. However, the pandemic puts a significant strain on all of us and, of course, also affects our performance capacity. For that reason, we would like to emphasize some points:
 
   + This course should be up high on your priority list, but **your health--physical and mental--definitely has highest priority**. 
-  + My goal is that you learn as much as possible. I won't achieve this goal if your mental healths suffers under this course. I will have an open ear and try to find individual solutions if you think that this is nevertheless the case. 
+  + Our goal is that you learn as much as possible. We won't achieve this goal if your mental health suffers under this course. We will have an open ear and try to find individual solutions if you think that this is nevertheless the case. 
   + Things that help me (this might be different for you):
     + I think that mental health is a precondition for productivity. So I like to remind myself that taking time off is not "unproductive time". 
     + I like to put time limits on my work days. Such limits often help me to use my time more effectively.
-    + Building a stable weekly routine that helps me to avoid situations in which I have to finish work just before a deadline. Startig early on homework assignments is part of this.
+    + Building a stable weekly routine that helps me to avoid situations in which I have to finish work just before a deadline. Starting early on homework assignments is part of this.
 
 
 ## R Notebooks
@@ -183,7 +185,7 @@ We need the following software for the lab:
 
 ### Deep dive R Notebooks.
 
-Everyone who took Multivariate Analyses last semester has seen a .Rmd document/R Notebook like this one before. So far all you had to know about these documents was that they worked... Today we will dive a bit deeper.
+Everyone who took Multivariate Analyses last semester has seen a `.Rmd` document/R Notebook like this one before. So far all you had to know about these documents was that they worked... Today we will dive a bit deeper.
 
 Markdown is a very simple language to write documents and transform them to all sorts of formats. Just to name a few: Word, pdf, html, open office, beamer presentations, html5 presentations. 
 
@@ -302,7 +304,7 @@ my_function <- function(argument1, argument2) {
 }
 ```
 
-(Of course that R function won't work. Thats why I set `eval = FALSE` so that R doesn't even try to evaluate the function. The (pseudo-)code will be included in the final document nevertheless.)
+(Of course that R function won't work. That's why I set `eval = FALSE` so that R doesn't even try to evaluate the function. The (pseudo-)code will be included in the final document nevertheless.)
 
 An argument can be any type of object (a scalar, matrix, array, etc). Let's write a simple function that works and returns the square of an (numeric) object.
 
@@ -364,7 +366,6 @@ In AQM we will rely on matrix algebra a lot. We will start with OLS in matrix ne
 
 Let's start with often used object types.
 
-
 ```{r Scalar - Vector - Matrix}
 # a scalar
 scalar <- 2
@@ -413,7 +414,7 @@ M * M
 ```
 
 
-When talking about "matrix-muliplication", we usually refer to the "matrix product" which differs from elementwise multiplication. Let's start with the multiplication of a vector and a matrix:
+When talking about "matrix-multiplication", we usually refer to the "matrix product" which differs from element-wise multiplication. Let's start with the multiplication of a vector and a matrix:
 
 
 $$
@@ -422,9 +423,9 @@ $$
 \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}
 =
 \begin{pmatrix} 
-1\cdot1 + 2\cdot4 & 3\cdot7 + 
-1\cdot2 + 2\cdot5 & 3\cdot8 + 
-1\cdot3 + 2\cdot6 & 3\cdot9
+1\cdot1 + 2\cdot4 + 3\cdot7 &
+1\cdot2 + 2\cdot5 + 3\cdot8 &
+1\cdot3 + 2\cdot6 + 3\cdot9
 \end{pmatrix}
 =
 \begin{pmatrix} 
@@ -537,7 +538,7 @@ t(t(M3)) == M3
 M4 <- matrix(c(rep(1, 3), 2, 3, 4, 4:6),
              nrow = 3,
              ncol = 3,
-             byrow = T)
+             byrow = T) 
 
 t(M4)
 ```
