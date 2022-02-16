@@ -80,7 +80,7 @@ As a result, **you can expect** the lab sessions to prepare you to ...
 
 ### Structure of the lab sessions
 
-I aim to split each lab session into two parts:
+We aim to split each lab session into two parts:
 
   - **Phase 1** (~60 minutes): In this part we will give you input. This includes all the points mentioned above. Whether you run the code simultaneously on your computer or not is completely up to you -- but its absolutely fine to simply listen and watch without doing any coding. You are welcome to interrupt us at any time if you have questions or feel like the pace is too high.
   
@@ -128,12 +128,12 @@ Although the homework assignments should push you towards your limits, they are 
 
 1. **Talk to your group members and classmates**. Everybody has strengths and weaknesses, good and bad days. This class is a collective learning enterprise and team work is highly encouraged.
 2. **Post your question on Slack**. Use it to ask questions and share materials with your fellow students. We encourage you to use it, and we will monitor it daily during weekdays.
-3. **Come to our office hours**. We both have 90 minutes reserved for AQM questions, Oliver on [Mondays 16:00 to 17.30](https://calendly.com/orittman/aqm), Viktoriia on [Tuesdays 15:30 to 17:00](https://calendly.com/vsemenova/aqm). Until further notice from the University, office hours have to take place via Zoom. You can come to either one of us, regardless of which lab you attended that week. To avoid waiting, please schedule an appointment via Calendly 6 hours in advance. If you already have specific questions you want to ask, include them already so that I can plan and prepare for your questions ahead of time. If neither of Monday nor Tuesday work for you at all, slack us and we can make an appointment.
+3. **Come to our office hours**. We both have 90 minutes reserved for AQM questions, Oliver on [Mondays 16:00 to 17.30](https://calendly.com/orittman/aqm), Viktoriia on [Tuesdays 15:30 to 17:00](https://calendly.com/vsemenova/aqm). Until further notice from the University, office hours have to take place via Zoom. You can come to either one of us, regardless of which lab you attended that week. To avoid waiting, please schedule an appointment via Calendly 6 hours in advance. If you already have specific questions you want to ask, include them already so that we can plan and prepare for your questions ahead of time. If neither of Monday nor Tuesday work for you at all, slack us and we can make an appointment.
 4. **Talk to Thomas Gschwend**. We would recommend that you use this option as a last resort. For example, if we are unable to answer your questions. Mostly, you should use Thomas Gschwend's office hours to discuss your final paper ideas and lecture questions.
 
 ### Homework Groups
 
-Other than last semester, you are free to form your own homework groups and work together for the entire semester. Please start organizing your homework group after today's session (if you haven't already). If you formed a group, DM on Slack one of tutors with your names, preferably **by Monday (February 21) morning**. If you do not find a group on your own, DM one of us by Monday as well and we will try to figure it out for you. You can also shortly summarise your research interests, so we can try to find a well-fitting group for you.
+You are free to form your own homework groups and work together for the entire semester. Please start organizing your homework group after today's session (if you haven't already). If you formed a group, DM on Slack one of tutors with your names, preferably **by Monday (February 21) morning**. If you do not find a group on your own, DM one of us by Monday as well and we will try to figure it out for you. You can also shortly summarise your research interests, so we can try to find a well-fitting group for you.
 
 Homework assignments will be distributed via GitHub after the lecture on Wednesdays. Assignments are due by the following Tuesday, 23:59. You can find all the dates on the course website, e.g. here: https://aqm2022.netlify.app/material/02-week/. 
 
@@ -159,7 +159,7 @@ Your term paper may seem far away now, but we strongly (!!!) recommend to start 
 
 ## Mental Health
 
-This is a challenging course in a challenging time. It is also an elective course, so we expect a high level of commitment towards the learning goals of the course. However, the pandemic puts a significant strain on all of us and, of course, also affects our performance capacity. For that reason, we would like to emphasize some points:
+This is a challenging course in a challenging time. It is also an elective course, so we expect a high level of commitment towards the learning goals of the course. However, the pandemic still puts a significant strain on all of us and, of course, also affects our performance capacity. For that reason, we would like to emphasize some points:
 
   + This course should be up high on your priority list, but **your health--physical and mental--definitely has highest priority**. 
   + Our goal is that you learn as much as possible. We won't achieve this goal if your mental health suffers under this course. We will have an open ear and try to find individual solutions if you think that this is nevertheless the case. 
@@ -183,9 +183,7 @@ We need the following software for the lab:
 
 ### Deep dive R Notebooks
 
-Everyone who took Multivariate Analyses last semester has seen a `.Rmd` document/R Notebook like this one before. So far all you had to know about these documents was that they worked... Today we will dive a bit deeper.
-
-Markdown is a very simple language to write documents and transform them to all sorts of formats. Just to name a few: Word, pdf, html, open office, beamer presentations, html5 presentations. 
+Everyone who took Multivariate Analyses last semester has seen a `.Rmd` document/R Notebook like this one before. Markdown is a very simple language to write documents and transform them to all sorts of formats. Just to name a few: Word, pdf, html, open office, beamer presentations, html5 presentations. 
 
 The best thing about it: It allows us to integrate `R`-code in the markdown language. This is very straightforward, just like in this file we have to indicate what is code and `knitr` will first calculate all the code chunks and put them in the final markdown document. RStudio directly translates this document to html. When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the _Preview_ button or press _Cmd+Shift+K_ / _Ctrl+Shift+K_ to preview the HTML file).
 
@@ -363,7 +361,7 @@ When functions get long and complicated it can be helpful to write multiple, sim
 
 ### Matrix Algebra in R.
 
-In AQM we will rely on matrix algebra a lot. We will start with OLS in matrix next week. This section introduces you to the basic syntax and error messages you will frequently use and see.
+In AQM we will rely on matrix algebra a lot. We will start with OLS in matrix form next week. This section introduces you to the basic syntax and error messages you will frequently use and see.
 
 Let's start with often used object types.
 
@@ -443,7 +441,33 @@ M
 vector %*% M
 ```
 
-Now we want to multiply two matrices:
+
+#### Exercise 1
+
+Grab a pen and paper and do the following calculation:
+
+$$
+\begin{pmatrix} 3 & 2 & 1\end{pmatrix}
+\times 
+\begin{pmatrix} 1 & 2 & 3 \\ 1 & 2 & 3 \\ 1 & 2 & 3 \end{pmatrix}
+=
+
+$$
+
+You can check the solution in R:
+
+```{r}
+v_ex1 <- c(3, 2, 1) 
+m_ex1 <- matrix(c(rep(1, 3), rep(2, 3), rep(3, 3)),
+                nrow = 3, 
+                ncol = 3,
+                byrow = F)
+
+v_ex1 %*% m_ex1
+```
+
+
+Okay, now we want to multiply two matrices:
 
 $$
 \begin{pmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{pmatrix}
@@ -483,7 +507,18 @@ M2 * M1
 M1 %*% M2
 ```
 
+#### Exercise 2
+
 Is `M1 %*% M2` the same as `M2 %*% M1`. Let's do it analytically first:
+
+$$
+\begin{pmatrix} 7 & 8 & 9 \\ 10 & 11 & 12 \end{pmatrix}
+\times 
+\begin{pmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{pmatrix}
+=
+$$
+
+Here is the solution:
 
 $$
 \begin{pmatrix} 7 & 8 & 9 \\ 10 & 11 & 12 \end{pmatrix}
@@ -500,7 +535,6 @@ $$
 103 & 136\\
 \end{pmatrix}
 $$
-
 
 And now in R:
 
@@ -572,9 +606,9 @@ solve(M5) %*% M5
 
 **Matrix algebra will be essential in this course!** There will be matrix algebra in every single week. So if you struggle understanding these operations, please review the respective material from your math course this week.
 
-### Exercise I
+### Exercise 3
 
-A lab session without an exercise would be boring. So here is your first AQM `R` exercise in 2022. 
+A lab session without an `R` exercise would be boring. So here is your first AQM `R` exercise in 2022. 
 
 1. I want you to create a $n \times 1$ (column) vector $y$, and a $n \times k$ matrix $X$ (you can choose $n$ and $k$ freely...), both objects should contain random numbers. Remember that it is always $rows \times columns$ (Roller Coaster, Roman Catholic ...).
 2. Then, write a function that returns the value $(X'X)^{-1}X'y$ (you have seen that on the Syllabus... and in the next session you will learn how to derive this formula).
