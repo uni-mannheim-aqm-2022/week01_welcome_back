@@ -17,7 +17,8 @@ output:
     toc: yes
 ---
 
-```{r setup}
+
+```r
 # The first line sets an option for the final document that can be produced from
 # the .Rmd file. Don't worry about it.
 knitr::opts_chunk$set(echo = TRUE)
@@ -45,6 +46,23 @@ if (length(p_to_install) > 0) {
 # this project. Additionally the expression returns whether the packages were
 # successfully loaded.
 sapply(p_needed, require, character.only = TRUE)
+```
+
+```
+## Loading required package: viridis
+```
+
+```
+## Loading required package: viridisLite
+```
+
+```
+## Loading required package: knitr
+```
+
+```
+## viridis   knitr 
+##    TRUE    TRUE
 ```
 
 ---
@@ -218,7 +236,8 @@ Moreover, to help you out, Rstudio offers a Visual Markdown editor, which allows
 
 R Markdown integrates really well with R Code. You can include a new code chunk by pressing _Cmd+Alt+I_. In a code chunk you can write and evaluate all your favorite R Code and include the results directly in your document. For example a plot. 
 
-```{r A chunk with a plot}
+
+```r
 x <- rnorm(1000)
 y <- rnorm(1000)
 
@@ -247,14 +266,27 @@ mtext(
 )
 ```
 
+<img src="AQM2022_week01_files/figure-html/A chunk with a plot-1.png" width="672" />
+
 What if you preferred a table over a plot? 
 
-```{r Chunk with a table}
+
+```r
 df <- data.frame(y = y, x = x)
 summary(df)
 ```
 
-You can even call R objects inline. Like: The second value of x is `r round(x[2],2)`. This is really helpful for writing up results that change from time to time (like simulations).
+```
+##        y                  x            
+##  Min.   :-3.45175   Min.   :-3.398099  
+##  1st Qu.:-0.65981   1st Qu.:-0.664866  
+##  Median : 0.05950   Median : 0.006584  
+##  Mean   : 0.03245   Mean   :-0.001546  
+##  3rd Qu.: 0.72030   3rd Qu.: 0.658591  
+##  Max.   : 2.77493   Max.   : 3.114318
+```
+
+You can even call R objects inline. Like: The second value of x is 0.76. This is really helpful for writing up results that change from time to time (like simulations).
 
 You can set a lot of so called chunk options. Here is an overview:
 
@@ -269,15 +301,21 @@ See the [R Markdown Reference Guide](https://rstudio.com/wp-content/uploads/2015
 
 Why? In a paper you usually don't want to include the code that produced your plots and numbers (however for your homework assignments you always have to include it). This can be achieved with the option `echo`. If you set `echo` to `FALSE`, then only the output of the code chunk will be included in your final document. But not the code itself.
 
-```{r Display a table but not the code, echo = FALSE}
-df <- data.frame(y = y, x = x)
 
-summary(df)
+```
+##        y                  x            
+##  Min.   :-3.45175   Min.   :-3.398099  
+##  1st Qu.:-0.65981   1st Qu.:-0.664866  
+##  Median : 0.05950   Median : 0.006584  
+##  Mean   : 0.03245   Mean   :-0.001546  
+##  3rd Qu.: 0.72030   3rd Qu.: 0.658591  
+##  Max.   : 2.77493   Max.   : 3.114318
 ```
 
 Or maybe sometimes you want to include R code but not the output (e.g. for data preparation)? Just set `results = 'hide'`. (Note that you could also use the option `eval = FALSE` to achieve something similar. At least at first sight. Can anyone guess what the difference might be?)
 
-```{r Chunk with table but no table, results = 'hide'}
+
+```r
 df <- data.frame(y = y, x = x)
 
 summary(df)
@@ -296,7 +334,8 @@ In the last course you also gained some experience in writing your own functions
 
 A function has a name, typically at least one argument, and a body of code that tells the function what to do with the input. In the end, the function usually specifies what to return.
 
-```{r An example of a R function, eval = FALSE}
+
+```r
 my_function <- function(argument1, argument2) {
   statements
   return(something)
@@ -308,7 +347,8 @@ my_function <- function(argument1, argument2) {
 An argument can be any type of object (a scalar, matrix, array, etc). Let's write a simple function that works and returns the square of an (numeric) object.
 
 
-```{r Square function}
+
+```r
 square_it <- function(x) {
   square <- x * x
   return(square)
@@ -317,25 +357,55 @@ square_it <- function(x) {
 
 Let's see if it works.
 
-```{r Square everything}
-square_it(15)
 
+```r
+square_it(15)
+```
+
+```
+## [1] 225
+```
+
+```r
 a <- c(1, 5, 9)
 
 square_it(a)
+```
 
+```
+## [1]  1 25 81
+```
+
+```r
 M <- matrix(c(1:9),
             nrow = 3,
             ncol = 3,
             byrow = T)
 M
+```
 
+```
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+```
+
+```r
 square_it(M)
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    1    4    9
+## [2,]   16   25   36
+## [3,]   49   64   81
 ```
 
 Of course, it seems redundant to write a function when I can use an implemented operator. Typically, the functions you will write are more complicated and have more arguments. It is hard to keep track when functions become long and complicated. For that reason, it is helpful to know that you can call functions within another function.
 
-```{r A complicated function}
+
+```r
 complicated_function <- function(scalar, vector, matrix) {
   # square the scalar
   squared_scalar <- square_it(scalar)
@@ -353,7 +423,8 @@ complicated_function <- function(scalar, vector, matrix) {
 
 Let's evaluate the function.
 
-```{r Evaluating a complicated function}
+
+```r
 res1 <- complicated_function(5, a, M)
 ```
 
@@ -365,51 +436,141 @@ In AQM we will rely on matrix algebra a lot. We will start with OLS in matrix fo
 
 Let's start with often used object types.
 
-```{r Scalar - Vector - Matrix}
+
+```r
 # a scalar
 scalar <- 2
 scalar
+```
 
+```
+## [1] 2
+```
+
+```r
 # a vector
 vector <- c(1:3)
 vector
+```
 
+```
+## [1] 1 2 3
+```
+
+```r
 # a matrix
 M <- matrix(c(1:9),
             nrow = 3,
             ncol = 3,
             byrow = T)
 M
+```
 
+```
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+```
+
+```r
 # a diagonal matrix e.g. identity matrix
 M_diag <- diag(1, nrow = 3, ncol = 3)
-
 ```
 
 #### Matrix Multiplication
 
 We start by multiplying a scalar with a vector and a matrix:
 
-```{r Matrix Math I}
 
+```r
 scalar
-vector
-M
+```
 
+```
+## [1] 2
+```
+
+```r
+vector
+```
+
+```
+## [1] 1 2 3
+```
+
+```r
+M
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+```
+
+```r
 # Scalar-Vector/Matrix multiplication
 
 scalar * vector
-scalar * M
+```
 
+```
+## [1] 2 4 6
+```
+
+```r
+scalar * M
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    2    4    6
+## [2,]    8   10   12
+## [3,]   14   16   18
+```
+
+```r
 # Vector-Vector/Matrix multiplication
 
 vector * vector
+```
+
+```
+## [1] 1 4 9
+```
+
+```r
 vector %*% vector # What's the difference?
+```
 
+```
+##      [,1]
+## [1,]   14
+```
+
+```r
 vector * M
+```
 
+```
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    8   10   12
+## [3,]   21   24   27
+```
+
+```r
 # Elementwise multiplication of two matrices:
 M * M
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    1    4    9
+## [2,]   16   25   36
+## [3,]   49   64   81
 ```
 
 
@@ -434,11 +595,33 @@ $$
 
 Let's do this with R:
 
-```{r Matrix Math III}
-vector
-M
 
+```r
+vector
+```
+
+```
+## [1] 1 2 3
+```
+
+```r
+M
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+```
+
+```r
 vector %*% M
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]   30   36   42
 ```
 
 
@@ -456,7 +639,8 @@ $$
 
 You can check the solution in R:
 
-```{r}
+
+```r
 v_ex1 <- c(3, 2, 1) 
 m_ex1 <- matrix(c(rep(1, 3), rep(2, 3), rep(3, 3)),
                 nrow = 3, 
@@ -464,6 +648,11 @@ m_ex1 <- matrix(c(rep(1, 3), rep(2, 3), rep(3, 3)),
                 byrow = F)
 
 v_ex1 %*% m_ex1
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    6   12   18
 ```
 
 
@@ -487,7 +676,8 @@ $$
 \end{pmatrix}
 $$
 
-```{r Two Matrices}
+
+```r
 M1 <- matrix(c(1:6),
              nrow = 3,
              ncol = 2,
@@ -500,7 +690,8 @@ M2 <- matrix(c(7:12),
 ```
 
 
-```{r Matrix Math VI, eval = F}
+
+```r
 M1 * M2
 M2 * M1
 
@@ -538,8 +729,15 @@ $$
 
 And now in R:
 
-```{r}
+
+```r
 M2 %*% M1
+```
+
+```
+##      [,1] [,2]
+## [1,]   76  100
+## [2,]  103  136
 ```
 
 
@@ -560,7 +758,8 @@ $$
 
 Luckily, the transpose and inverse are already implemented in R for us. So we can spend some more time on more interesting things.
 
-```{r Transpose}
+
+```r
 M3 <- matrix(c(1, 2, 2, 3),
              nrow = 2,
              ncol = 2,
@@ -568,14 +767,38 @@ M3 <- matrix(c(1, 2, 2, 3),
 
 # The transpose
 t(M3)
-t(t(M3)) == M3
+```
 
+```
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    2    3
+```
+
+```r
+t(t(M3)) == M3
+```
+
+```
+##      [,1] [,2]
+## [1,] TRUE TRUE
+## [2,] TRUE TRUE
+```
+
+```r
 M4 <- matrix(c(rep(1, 3), 2, 3, 4, 4:6),
              nrow = 3,
              ncol = 3,
              byrow = T) 
 
 t(M4)
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    1    2    4
+## [2,]    1    3    5
+## [3,]    1    4    6
 ```
 
 What about the inverse of this matrix:
@@ -590,18 +813,50 @@ $$
 A \times A^{-1} = I
 $$
 
-```{r Inverse}
+
+```r
 M5 <- matrix(c(1, 2, 2, 3),
              nrow = 2,
              ncol = 2,
              byrow = TRUE)
 M5
+```
 
+```
+##      [,1] [,2]
+## [1,]    1    2
+## [2,]    2    3
+```
+
+```r
 solve(M5)
+```
 
+```
+##      [,1] [,2]
+## [1,]   -3    2
+## [2,]    2   -1
+```
+
+```r
 # check whether AX = XA = I is true
 M5 %*% solve(M5)
+```
+
+```
+##      [,1] [,2]
+## [1,]    1    0
+## [2,]    0    1
+```
+
+```r
 solve(M5) %*% M5
+```
+
+```
+##      [,1] [,2]
+## [1,]    1    0
+## [2,]    0    1
 ```
 
 **Matrix algebra will be essential in this course!** There will be matrix algebra in every single week. So if you struggle understanding these operations, please review the respective material from your math course this week.
@@ -615,7 +870,8 @@ A lab session without an `R` exercise would be boring. So here is your first AQM
 3. Before you run the function: What will be the dimensions of the output? 
 
 
-```{r Exercise I, eval = FALSE}
+
+```r
 n <- 10
 k <- 5
 y <- matrix(rnorm(n = n, mean = 0, sd = 1),
